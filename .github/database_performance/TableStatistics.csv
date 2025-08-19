@@ -1,0 +1,6 @@
+"TableName","Row_Count","TotalSpaceKB","UsedSpaceKB","DataSpaceKB"
+"Customers","10000","1352","1312","1296"
+"Employees","0","0","0","0"
+"OrderDetails","0","0","0","0"
+"Orders","0","0","0","0"
+"Products","0","0","0","0"
