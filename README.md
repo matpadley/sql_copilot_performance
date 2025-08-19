@@ -65,6 +65,17 @@ RunTableAndIndexStats.ps1
 - **support_scripts/**: Utility scripts for statistics
 - **demo_performance_db.sql**: Main demo orchestration script
 
+## SQL Query Optimization Prompt
+
+A reusable prompt for optimizing SQL queries is provided at `.github/prompts/optimise_sql_query.prompt.md`. This prompt is designed for use with Copilot or other LLMs to assist in improving SQL query performance. It works by:
+
+- Requesting a query from the user (either inline or as a file).
+- Reviewing available indexes in the `indexes/` folder.
+- Considering table and index statistics from `database_performance/TableStatistics.csv` and `database_performance/IndexStatistics.csv`.
+- Making targeted performance suggestions for T-SQL queries or stored procedures.
+
+To use, provide a query or procedure file and reference the prompt for optimization advice.
+
 ## Key Features
 - Modular SQL scripts for tables, indexes, and procedures
 - Demonstrates inefficient query patterns and their optimization
