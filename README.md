@@ -1,93 +1,98 @@
 # SQL Performance Demo
 
-A demonstration project focused on SQL performance best practices, including indexing, query optimization, and schema design. The project uses a sample database and is organized for clarity and hands-on experimentation.
-
----
+## Project Description
+This repository demonstrates SQL performance optimization techniques using a sample database. It showcases best practices for indexing, query optimization, and schema design. The project is intentionally simple and self-contained, focusing on the impact of performance patterns in SQL Server environments.
 
 ## Technology Stack
-- Microsoft SQL Server (recommended)
-- SQL (DDL, DML)
-- No external dependencies or frameworks
-
----
+- **Database:** Microsoft SQL Server (tested on SQL Server 2019+)
+- **Languages:** T-SQL
+- **Tools:** SQL Server Management Studio (SSMS), Azure Data Studio
+- **Scripts:** PowerShell for orchestration
 
 ## Project Architecture
-- **Schema Files**: Located in `tables/`, each file defines a single table (e.g., `Customers.sql`).
-- **Index Files**: Located in `indexes/`, each file defines a single index (e.g., `Orders_CustomerID.sql`).
-- **Demo Script**: The root `demo_performance_db.sql` orchestrates schema creation, index application, and includes sample queries for performance testing.
+The project is organized into modular folders:
+- **tables/**: Contains DDL scripts for each table
+- **indexes/**: Contains DDL scripts for each index
+- **procs/**: Contains inefficient stored procedures for demo purposes
+- **support_scripts/**: Utility scripts for gathering table and index statistics
+- **demo_performance_db.sql**: Main orchestration script for demo setup and performance testing
 
-```
-project-root/
-├── tables/           # Table definitions (DDL)
-├── indexes/          # Index definitions
-└── demo_performance_db.sql  # Main demo script
-```
-
----
+**Data Flow:**
+1. Tables are created from scripts in `tables/`
+2. Indexes are applied from scripts in `indexes/`
+3. Stored procedures are created from scripts in `procs/`
+4. Demo script runs sample queries and performance tests
 
 ## Getting Started
-1. **Prerequisites**: Microsoft SQL Server (or compatible), SQL Server Management Studio (SSMS) or Azure Data Studio.
-2. **Setup**:
-   - Run all scripts in `tables/` to create tables.
-   - Run all scripts in `indexes/` to create indexes.
-   - Execute `demo_performance_db.sql` for additional setup and demo queries.
-3. **Performance Testing**:
-   - Use queries in `demo_performance_db.sql` to compare performance with and without indexes.
-   - Comment/uncomment index creation statements to observe impact.
+### Prerequisites
+- Microsoft SQL Server (local or cloud instance)
+- SSMS or Azure Data Studio
 
----
+### Installation & Setup
+1. Clone the repository:
+   ```powershell
+   git clone https://github.com/matpadley/sql_copilot_performance.git
+   ```
+2. Open SSMS or Azure Data Studio and connect to your SQL Server instance.
+3. Run all scripts in `tables/` to create tables.
+4. Run all scripts in `indexes/` to create indexes.
+5. Run all scripts in `procs/` to create stored procedures.
+6. Execute `demo_performance_db.sql` for demo orchestration and performance testing.
 
 ## Project Structure
-- `tables/` — Table DDL scripts
-- `indexes/` — Index DDL scripts
-- `demo_performance_db.sql` — Main orchestration and demo queries
-
----
+```
+Copilot-PerformancePrompt.md
+CreateDatabase.sql
+indexes/
+    Customers_City.sql
+    ...
+procs/
+    GetAllCustomers_Inefficient.sql
+    ...
+support_scripts/
+    GetIndexStatistics.sql
+    GetTableStatistics.sql
+tables/
+    Customers.sql
+    ...
+demo_performance_db.sql
+RunAllDemoScripts.ps1
+RunTableAndIndexStats.ps1
+```
+- **tables/**: Table definitions
+- **indexes/**: Index definitions
+- **procs/**: Inefficient stored procedures for demo
+- **support_scripts/**: Utility scripts for statistics
+- **demo_performance_db.sql**: Main demo orchestration script
 
 ## Key Features
-- Modular table and index definitions for easy experimentation
-- Demonstrates impact of indexing on query performance
-- Simple, self-contained structure for learning and testing
-- No external dependencies or application code
-
----
+- Modular SQL scripts for tables, indexes, and procedures
+- Demonstrates inefficient query patterns and their optimization
+- Includes scripts for gathering table and index statistics
+- Easy to run and modify for performance testing
 
 ## Development Workflow
-- Manual execution of scripts in SQL environment
-- Focus on query plans and execution times for performance analysis
-- No automated test suite; manual inspection is expected
-- Use SSMS or Azure Data Studio for query analysis
-
----
+- Manual execution of scripts in recommended order
+- Use SSMS/Azure Data Studio for query analysis and performance measurement
+- Comment/uncomment index scripts to observe performance impact
+- No automated CI/CD; manual workflow for demonstration purposes
 
 ## Coding Standards
-- Table files named after the entity (e.g., `Customers.sql`)
-- Index files named after table and column (e.g., `Orders_CustomerID.sql`)
-- Strict separation of table and index definitions
-- Standard SQL DDL and DML syntax
-
----
+- Each SQL file contains a single DDL or procedure
+- File naming: `Entity.sql` for tables, `Table_Column.sql` for indexes, `ProcedureName_Inefficient.sql` for procs
+- Separation of concerns: Tables, indexes, and procedures are strictly separated
+- No external dependencies or application code
 
 ## Testing
-- Manual performance testing using demo queries
-- Use `SET STATISTICS TIME ON` or similar statements to measure query execution time
-- No automated tests; rely on manual inspection and query plan analysis
-
----
+- Manual performance testing using SSMS/Azure Data Studio
+- Use `SET STATISTICS TIME ON` and query plans to analyze performance
+- Utility scripts in `support_scripts/` for statistics gathering
 
 ## Contributing
-- Contributions welcome for new performance patterns, schema designs, or demo queries
-- Follow existing file naming and separation conventions
-- See code examples in `tables/` and `indexes/` for guidance
-
----
+- Fork the repository and create a feature branch
+- Follow file naming and organization conventions
+- Submit pull requests with clear descriptions
+- Reference inefficient patterns and optimization strategies in your contributions
 
 ## License
-This project is provided for educational and demonstration purposes. No specific license is included.
-
----
-
-## References
-- [SQL Server Documentation](https://learn.microsoft.com/en-us/sql/)
-- [SSMS Download](https://aka.ms/ssms)
-- [Azure Data Studio](https://learn.microsoft.com/en-us/sql/azure-data-studio/)
+This project is released under the MIT License.
